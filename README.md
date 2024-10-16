@@ -3,35 +3,36 @@
 ## users テーブル
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
-| nickname           | string | null: false, unique: true |
+| nickname           | string | null: false |
 | email              | string | null: false, unique: true |
-| password           | string | null: false |
-| name_kanji         | string | null: false |
-| name_kana          | string | null: false |
+| encrypted_password | string | null: false |
+| last_name_kanji    | string | null: false |
+| first_name_kanji   | string | null: false |
+| last_name_kana     | string | null: false |
+| first_name_kana    | string | null: false |
 | birthday           | date   | null: false |
 
 ### Association
-- has_many :items*
-- has_many :buys*
+- has_many :items
+- has_many :buys
 
 
 ## items テーブル
-| Column           | Type   | Options     |
-| ---------------- | ------ | ----------- |
-| image_url        |        | null: false |
-| item             | text   | null: false |
-| item_description | text   | null: false |
-| category         | string | null: false |
-| item_status      | string | null: false |
-| shipping_cost    | string | null: false |
-| shipping_region  | string | null: false |
-| delivery_time    | string | null: false |
+| Column           | Type    | Options     |
+| ---------------- | ------- | ----------- |
+| item_name        | string  | null: false |
+| item_description | text    | null: false |
+| category_id      | integer | null: false |
+| item_status_id   | integer | null: false |
+| shipping_cost_id | integer | null: false |
+| prefectures_id   | integer | null: false |
+| delivery_time_id | integer | null: false |
 | price            | integer | null: false |
 | user             | references | null: false, foreign_key: true |
 
 ### Association
-- has_one    :buy*
-- belongs_to :user*
+- has_one    :buy
+- belongs_to :user
 
 
 ## buys テーブル
@@ -41,20 +42,20 @@
 | user   | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :item*
-- belongs_to :user*
-- has_one    :buyer_address*
+- belongs_to :item
+- belongs_to :user
+- has_one    :buyer_address
 
 ## buyer_address テーブル
-| Column         | Type       | Options                     |
+| Column         | Type    | Options                        |
 | -------------- | ------- | ------------------------------ |
-| postcode       | integer | null: false |
-| prefectures    | string  | null: false |
-| municipalities | text    | null: false |
-| street_address | text    | null: false |
-| building_name  | text    |             |
-| telephone      | integer | null: false |
+| postcode       | string  | null: false |
+| prefectures_id | integer | null: false |
+| municipalities | string  | null: false |
+| street_address | string  | null: false |
+| building_name  | string  |             |
+| telephone      | string  | null: false |
 | buy            | references | null: false, foreign_key: true|
 
 ### Association
-- belongs_to :buy*
+- belongs_to :buy
