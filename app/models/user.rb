@@ -12,6 +12,6 @@ class User < ApplicationRecord
   validates :first_name_kana,  presence: true, format: { with: /\A[ァ-ヶ一]+\z/, message: 'を正確に入力してください' }
   validates :birthday,         presence: true
 
-  # has_many :items
+  has_many :items
   # has_many :buys
 end
