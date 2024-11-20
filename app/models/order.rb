@@ -3,6 +3,7 @@ class Order
   attr_accessor :user_id, :item_id, :buy_id, :postcode, :prefecture_id, :municipalities, :street_address,
                 :telephone, :building_name, :token
 
+  validates :token,   presence: true
   validates :user_id, presence: true
   validates :item_id, presence: true
   validates :postcode,        presence: true,
