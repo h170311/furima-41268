@@ -1,7 +1,7 @@
 class Order
   include ActiveModel::Model
   attr_accessor :user_id, :item_id, :buy_id, :postcode, :prefecture_id, :municipalities, :street_address,
-                :telephone, :building_name
+                :telephone, :building_name, :token
 
   validates :user_id, presence: true
   validates :item_id, presence: true
