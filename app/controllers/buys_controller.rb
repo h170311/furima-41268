@@ -1,12 +1,11 @@
 class BuysController < ApplicationController
   before_action :authenticate_user!, only: [:index]
-  before_action :set_item,      only: [:index]
+  before_action :set_item,      only: [:index, :create]
   before_action :move_to_index, only: [:index]
   before_action :current_user_index, only: [:index]
 
   def index
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
-    @item = Item.find(params[:item_id])
     @order = Order.new
   end
 
@@ -16,7 +15,6 @@ class BuysController < ApplicationController
 
   def create
     @order = Order.new(set_params)
-    @item = Item.find(params[:item_id])
     if @order.valid?
       pay_item
       @order.save

@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe Order, type: :model do
   before do
     user = FactoryBot.create(:user)
-    @order = FactoryBot.build(:order, user_id: user.id)
+    item = FactoryBot.create(:item)
+    @order = FactoryBot.build(:order, user_id: user.id, item_id: item.id)
   end
   describe '購入情報の保存' do
     context '内容に問題ない場合' do
