@@ -18,7 +18,7 @@ class Item < ApplicationRecord
   validates :price, presence: true,
                     numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'を正確に入力してください' }
 
-  # has_one    :buy
+  has_one    :buy
   belongs_to :user
   has_one_attached :image
 end
